@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Header } from "./components/header";
+import {RoutesComponent} from "./Routes";
+import {fetchHomePageProducts, useUserInfo} from "./redux";
+import { fetchCart } from "./redux/slices/cartSlice";
+import { Box } from "@mui/material";
+import { SideBar } from "./components/sidebar";
+import { styled } from "@mui/system";
 
-function App() {
+const StyledContentContainer = styled(Box)(() => ({
+  padding:"0 0 0 37px",
+  width:"calc(100% - 255px)",
+  marginLeft:"255px",
+  marginTop: "100px",
+  minHeight:"100vh",
+}))
+
+
+const App = () => {
+  const dispatch = useDispatch();
+  const userInfo = useUserInfo();
+  useEffect(() => {
+    dispatch(fetchHomePageProducts());
+  },[]);
+
+  useEffect(() => {
+    if(userInfo){
+      dispatch(fetchCart(userInfo._id))
+    }
+  },[userInfo]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Box>
+      <SideBar />
+      <Header/>
+      <StyledContentContainer>{RoutesComponent()}</StyledContentContainer>
+    </Box>
+  )
+};
 
 export default App;
