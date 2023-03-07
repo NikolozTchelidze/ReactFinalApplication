@@ -9,7 +9,7 @@ import { SideBar } from "./components/sidebar";
 import { styled } from "@mui/system";
 
 const StyledContentContainer = styled(Box)(() => ({
-  padding:"0 0 0 37px",
+  padding:"0 0 0 8px",
   width:"calc(100% - 255px)",
   marginLeft:"255px",
   marginTop: "100px",

@@ -42,7 +42,7 @@ export const Header = () => {
     <Box sx={{ marginTop: 10 }}>
       <StyledAppBar>
         <StyledToolbar>
-          <Link to="/">Home</Link>
+          <Link  to="/">Home</Link>
           <SearchBar />
           <UserIcon />
           <Button onClick={() => setIsCartDrawerOpen(true)}>

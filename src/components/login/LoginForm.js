@@ -47,7 +47,7 @@ export const LoginForm = () => {
       .then(() => navigate("/"));
   };
   return (
-    <FormControl>
+    <FormControl sx={{marginLeft:"350px",width:"400px"}}>
       <TextField
         name="email"
         label="Enter your email"
@@ -55,15 +55,17 @@ export const LoginForm = () => {
         onChange={onInputChange}
         error={!!loginFormValues.email.error}
         helperText={loginFormValues.email.error}
+        sx={{marginBottom:"10px"}}
       />
       <TextField
         name="password"
-        label="Enter your passowrd"
+        label="Enter your password"
         type="password"
         value={loginFormValues.password.value}
         onChange={onInputChange}
         error={!!loginFormValues.password.error}
         helperText={loginFormValues.password.error}
+        sx={{marginBottom:"10px"}}
       />
       <Button onClick={onLogin}>Log in</Button>
     </FormControl>

@@ -94,7 +94,7 @@ export const ProductForm = () => {
 
 
   return (
-    <FormControl fullWidth>
+    <FormControl sx={{width:"800px", marginLeft:"150px",}}>
       <TextField
         name="name"
         value={productFormValues.name.value}
